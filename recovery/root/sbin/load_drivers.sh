@@ -39,4 +39,4 @@ insmod /vendor/lib/modules/sx932x_sar.ko
 insmod /vendor/lib/modules/tps61280.ko
 
 umount /vendor
-setprop drivers.loaded 1
+setprop crypto.ready 1

@@ -40,6 +40,8 @@ TARGET_BOARD_PLATFORM := msm8953
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.usbconfigfs=true
 BOARD_KERNEL_CMDLINE += androidboot.hab.csv=1 androidboot.hab.product=ocean androidboot.hab.cid=50 androidboot.selinux=permissive
+# For the love of all that is holy, please do not include this in your ROM unless you really want TWRP to not work correctly!
+BOARD_KERNEL_CMDLINE += androidboot.fastboot=1
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
@@ -60,14 +62,15 @@ BOARD_USES_RECOVERY_AS_BOOT := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# Platform
+# Crypto
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_FBE := true
 PLATFORM_SECURITY_PATCH := 2030-01-01
 
 # TWRP
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
-TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_NEW_ION_HEAP := true
 TW_SCREEN_BLANK_ON_BOOT := true
